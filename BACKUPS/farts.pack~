@@ -1,0 +1,19 @@
+
+farts.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+wall
+  rotate: false
+  xy: 85, 14
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+floor
+  rotate: false
+  xy: 13, 14
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

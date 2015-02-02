@@ -1,0 +1,586 @@
+
+shadows.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mountainLeft
+  rotate: false
+  xy: 1, 792
+  size: 1000, 225
+  orig: 1000, 225
+  offset: 0, 0
+  index: -1
+mountainRight
+  rotate: false
+  xy: 1, 565
+  size: 1000, 225
+  orig: 1000, 225
+  offset: 0, 0
+  index: -1
+hardCandy
+  rotate: false
+  xy: 1003, 751
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 1
+hardCandy
+  rotate: false
+  xy: 1, 297
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 2
+hardCandy
+  rotate: false
+  xy: 1355, 751
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 3
+hardCandy
+  rotate: false
+  xy: 1, 29
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 4
+hardCandy
+  rotate: false
+  xy: 353, 297
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 5
+hardCandy
+  rotate: false
+  xy: 1707, 751
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 6
+hardCandy
+  rotate: false
+  xy: 353, 29
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 7
+hardCandy
+  rotate: false
+  xy: 2059, 751
+  size: 350, 266
+  orig: 350, 266
+  offset: 0, 0
+  index: 8
+moon
+  rotate: false
+  xy: 705, 315
+  size: 248, 248
+  orig: 248, 248
+  offset: 0, 0
+  index: -1
+houseGoal
+  rotate: false
+  xy: 705, 23
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 1
+houseGoal
+  rotate: false
+  xy: 817, 23
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 2
+houseGoal
+  rotate: false
+  xy: 2411, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 3
+houseGoal
+  rotate: false
+  xy: 2523, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 4
+houseGoal
+  rotate: false
+  xy: 2635, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 5
+houseGoal
+  rotate: false
+  xy: 2747, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 6
+houseGoal
+  rotate: false
+  xy: 2859, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 7
+houseGoal
+  rotate: false
+  xy: 2971, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 8
+houseGoal
+  rotate: false
+  xy: 3083, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 9
+houseGoal
+  rotate: false
+  xy: 3195, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 10
+houseGoal
+  rotate: false
+  xy: 3307, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 11
+houseGoal
+  rotate: false
+  xy: 3419, 727
+  size: 110, 290
+  orig: 110, 290
+  offset: 0, 0
+  index: 12
+rock01_Middle
+  rotate: false
+  xy: 3531, 665
+  size: 63, 352
+  orig: 63, 352
+  offset: 0, 0
+  index: -1
+rock01_Edge
+  rotate: false
+  xy: 3596, 709
+  size: 24, 308
+  orig: 24, 308
+  offset: 0, 0
+  index: -1
+cloud02
+  rotate: false
+  xy: 1003, 661
+  size: 198, 88
+  orig: 198, 88
+  offset: 0, 0
+  index: -1
+pumpkin1
+  rotate: false
+  xy: 3622, 877
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: 1
+pumpkin1
+  rotate: false
+  xy: 3622, 735
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: 2
+cloud03
+  rotate: false
+  xy: 1203, 664
+  size: 182, 85
+  orig: 182, 85
+  offset: 0, 0
+  index: -1
+cloud01
+  rotate: false
+  xy: 1003, 581
+  size: 178, 78
+  orig: 178, 78
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 955, 403
+  size: 32, 160
+  orig: 32, 160
+  offset: 0, 0
+  index: -1
+waterBG
+  rotate: false
+  xy: 3764, 857
+  size: 32, 160
+  orig: 32, 160
+  offset: 0, 0
+  index: -1
+ghost1
+  rotate: false
+  xy: 3798, 917
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 1
+ghost1
+  rotate: false
+  xy: 3850, 917
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 2
+ghost1
+  rotate: false
+  xy: 3902, 917
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 3
+ghost1
+  rotate: false
+  xy: 3954, 917
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 4
+ghost1
+  rotate: false
+  xy: 4006, 917
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 5
+playerRun
+  rotate: false
+  xy: 1387, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 1
+playerRun
+  rotate: false
+  xy: 1453, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 2
+playerRun
+  rotate: false
+  xy: 1519, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 3
+playerRun
+  rotate: false
+  xy: 1585, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 4
+playerRun
+  rotate: false
+  xy: 1651, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 5
+playerRun
+  rotate: false
+  xy: 1717, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 6
+playerRun
+  rotate: false
+  xy: 1783, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 7
+playerRun
+  rotate: false
+  xy: 1849, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 8
+playerRun
+  rotate: false
+  xy: 1915, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 9
+playerRun
+  rotate: false
+  xy: 1981, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 10
+playerRun
+  rotate: false
+  xy: 2047, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 11
+playerRun
+  rotate: false
+  xy: 2113, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 13
+playerRun
+  rotate: false
+  xy: 2179, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 14
+playerSentadillas
+  rotate: false
+  xy: 2245, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 1
+playerSentadillas
+  rotate: false
+  xy: 2311, 664
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 2
+ghostT1
+  rotate: false
+  xy: 3764, 755
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 1
+ghostT1
+  rotate: false
+  xy: 929, 213
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 2
+ghostT1
+  rotate: false
+  xy: 929, 111
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 3
+ghostT1
+  rotate: false
+  xy: 929, 9
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 4
+playerSentadillas
+  rotate: false
+  xy: 955, 316
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 3
+ghostT1
+  rotate: false
+  xy: 981, 214
+  size: 50, 100
+  orig: 50, 100
+  offset: 0, 0
+  index: 5
+playerSentadillas
+  rotate: false
+  xy: 981, 127
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 4
+playerSentadillas
+  rotate: false
+  xy: 981, 40
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 5
+timeLevel
+  rotate: false
+  xy: 3798, 863
+  size: 52, 52
+  orig: 52, 52
+  offset: 0, 0
+  index: -1
+playerRun
+  rotate: false
+  xy: 3852, 833
+  size: 64, 82
+  orig: 64, 82
+  offset: 0, 0
+  index: 12
+playerSentadillas
+  rotate: false
+  xy: 3918, 830
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 6
+playerSentadillas
+  rotate: false
+  xy: 3984, 830
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 7
+playerSentadillas
+  rotate: false
+  xy: 3816, 746
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 8
+playerSentadillas
+  rotate: false
+  xy: 3882, 743
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 9
+playerSentadillas
+  rotate: false
+  xy: 3948, 743
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 10
+playerSentadillas
+  rotate: false
+  xy: 4014, 743
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 11
+playerSentadillas
+  rotate: false
+  xy: 989, 478
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 12
+playerSentadillas
+  rotate: false
+  xy: 1055, 494
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 13
+playerSentadillas
+  rotate: false
+  xy: 1121, 494
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 14
+headSentadillas
+  rotate: false
+  xy: 989, 425
+  size: 52, 51
+  orig: 52, 51
+  offset: 0, 0
+  index: -1
+playerSentadillas
+  rotate: false
+  xy: 2377, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 15
+playerSentadillas
+  rotate: false
+  xy: 2443, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 16
+playerSentadillas
+  rotate: false
+  xy: 2509, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 17
+playerSentadillas
+  rotate: false
+  xy: 2575, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 18
+playerSentadillas
+  rotate: false
+  xy: 2641, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 19
+playerSentadillas
+  rotate: false
+  xy: 2707, 640
+  size: 64, 85
+  orig: 64, 85
+  offset: 0, 0
+  index: 20
+screamCandy
+  rotate: false
+  xy: 2773, 673
+  size: 50, 52
+  orig: 50, 52
+  offset: 0, 0
+  index: 1
+screamCandy
+  rotate: false
+  xy: 2825, 673
+  size: 50, 52
+  orig: 50, 52
+  offset: 0, 0
+  index: 2
+bulletCandy
+  rotate: false
+  xy: 1, 1
+  size: 25, 26
+  orig: 25, 26
+  offset: 0, 0
+  index: -1
+wall
+  rotate: false
+  xy: 1121, 25
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+floor
+  rotate: false
+  xy: 1048, 25
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
