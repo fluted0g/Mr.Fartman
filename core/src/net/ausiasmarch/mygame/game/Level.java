@@ -4,6 +4,7 @@ import net.ausiasmarch.mygame.actors.AbstractActor;
 import net.ausiasmarch.mygame.actors.Floor;
 import net.ausiasmarch.mygame.actors.Wall;
 import net.ausiasmarch.mygame.util.Constants;
+import net.ausiasmarch.mygame.actors.Torches;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -18,7 +19,8 @@ public class Level {
 	public enum BLOCK_TYPE {
 		EMPTY(0, 0, 0), // black
 		FLOOR(255,0,0), // red
-		WALL(0,255,0); // green
+		WALL(0,255,0), // green
+		TORCH(0,0,255); // blue
 		
 
 		private int color;
@@ -102,9 +104,9 @@ public class Level {
 					if (lastPixel != currentPixelColor) {
 						
 						obj = new Wall();
-						float heightIncreaseFactor = 0.25f;
-						offsetHeight = -3.0f;
-						obj.position.set(pixelX - 3.0f, baseHeight * obj.dimension.y
+						float heightIncreaseFactor = 1f;
+						offsetHeight = -4f;
+						obj.position.set(pixelX - 5f, baseHeight * obj.dimension.y
 								* heightIncreaseFactor + offsetHeight);
 						walls.add((Wall) obj);
 						
@@ -119,9 +121,9 @@ public class Level {
 						if (lastPixel != currentPixelColor) {
 						
 						obj = new Floor();
-						float heightIncreaseFactor = 0.25f;
-						offsetHeight = -3.0f;
-						obj.position.set(pixelX - 3.0f, baseHeight * obj.dimension.y
+						float heightIncreaseFactor = 1f;
+						offsetHeight = -4f;
+						obj.position.set(pixelX - 5f, baseHeight * obj.dimension.y
 								* heightIncreaseFactor + offsetHeight);
 						floors.add((Floor) obj);
 						
@@ -132,6 +134,8 @@ public class Level {
 					
 					}
 					
+					
+				} else if (BLOCK_TYPE.TORCH.sameColor(currentPixelColor)) {
 					
 				}
 				
@@ -151,7 +155,7 @@ public class Level {
 
 		
 		// Crea los decorados
-		
+
 
 		
 		// Situa los decorados

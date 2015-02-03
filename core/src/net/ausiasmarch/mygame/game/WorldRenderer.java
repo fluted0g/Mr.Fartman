@@ -53,6 +53,7 @@ public class WorldRenderer implements Disposable {
 		cameraGUI.update();
         backgroundTexture = new Texture("images/background.png");
         backgroundSprite =new Sprite(backgroundTexture);
+        backgroundSprite.setBounds(0, 0, 1280,768);
         backgroundSprite.rotate(180);
 	}
 	
@@ -91,6 +92,7 @@ public class WorldRenderer implements Disposable {
 	private void renderWorld(SpriteBatch batch) {
 		
 		worldController.cameraAssistant.applyToAxisX(camera);
+		worldController.cameraAssistant.applyToAxisY(camera);
 
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();

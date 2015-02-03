@@ -14,7 +14,7 @@ public class Floor extends AbstractActor {
 	}
 	
 	private void init() {
-		dimension.set(1,1.5f);
+		dimension.set(1,1f);
 		floor = Assets.instance.floors.floor;
 		setLength(1);
 	}

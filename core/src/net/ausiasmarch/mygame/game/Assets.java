@@ -18,7 +18,9 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Disposable;
+
 import net.ausiasmarch.mygame.util.Constants;
+import net.ausiasmarch.mygame.game.Assets.AssetLevelDecoration;
 
 public class Assets implements Disposable, AssetErrorListener {
 	public static final String TAG = Assets.class.getName();
@@ -30,7 +32,7 @@ public class Assets implements Disposable, AssetErrorListener {
 	public AssetFonts fonts;
 	public AssetWall walls;
 	public AssetFloor floors;
-
+	public AssetLevelDecoration levelDecoration;
 	
 	
 	
@@ -91,7 +93,11 @@ public class Assets implements Disposable, AssetErrorListener {
 	}
 	
 	public class AssetLevelDecoration {
+		public final AtlasRegion torch;
 		
+		public AssetLevelDecoration(TextureAtlas atlas) {
+			torch = atlas.findRegion("torch");
+		}
 	}
 	
 	
@@ -122,6 +128,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		fonts = new AssetFonts();
 		walls = new AssetWall(atlas);
 		floors = new AssetFloor(atlas);
+		levelDecoration = new AssetLevelDecoration(atlas);
 		
 		
 		

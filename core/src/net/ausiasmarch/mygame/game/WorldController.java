@@ -192,6 +192,13 @@ public class WorldController extends InputAdapter {
 	}
 	
 	//DEBUGGING STUFF
+	
+	
+	
+	
+	
+	
+	
 	private void updateTestObjects(float deltaTime) {
 		//Get current rotation from selected sprite
 		float rotation = testSprites[selectedSprite].getRotation();
@@ -207,8 +214,8 @@ public class WorldController extends InputAdapter {
 		//Create new array for 5 sprites
 		testSprites = new Sprite[5];
 		//Create empty POT-sized mixmap with 8 bit RGBA pixel data
-		int width = 32;
-		int height = 32;
+		int width = 128;
+		int height = 128;
 		Pixmap pixmap = createProceduralPixmap(width, height);
 		//Create a new texture from pixmap data
 		Texture texture = new Texture(pixmap);
@@ -277,7 +284,7 @@ public class WorldController extends InputAdapter {
 	private void handleDebugInput (float deltaTime) {
 		if (Gdx.app.getType() != ApplicationType.Desktop) return;
 		// Selected Sprite Controls
-		float sprMoveSpeed = 5 * deltaTime;
+		float sprMoveSpeed = 10 * deltaTime;
 		if (Gdx.input.isKeyPressed(Keys.A)) moveSelectedSprite(
 		-sprMoveSpeed, 0);
 		if (Gdx.input.isKeyPressed(Keys.D))
