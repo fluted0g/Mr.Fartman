@@ -6,14 +6,21 @@ repeat: none
 wall
   rotate: false
   xy: 85, 14
-  size: 64, 64
-  orig: 64, 64
+  size: 69, 64
+  orig: 69, 64
   offset: 0, 0
   index: -1
 floor
   rotate: false
   xy: 13, 14
-  size: 64, 64
-  orig: 64, 64
+  size: 69, 64
+  orig: 69, 64
+  offset: 0, 0
+  index: -1
+torch
+  rotate: false
+  xy: 165, 18
+  size: 58, 62
+  orig: 58, 62
   offset: 0, 0
   index: -1

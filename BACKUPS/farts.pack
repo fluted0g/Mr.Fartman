@@ -17,3 +17,10 @@ floor
   orig: 69, 64
   offset: 0, 0
   index: -1
+torch
+  rotate: false
+  xy: 165, 18
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
