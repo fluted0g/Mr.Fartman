@@ -20,7 +20,7 @@ public class Level {
 		EMPTY(0, 0, 0), // black
 		FLOOR(255,0,0), // red
 		WALL(0,255,0), // green
-		PLAYER(0,0,255); // blue
+		TORCH(0,0,255); // blue
 		
 
 		private int color;
@@ -50,9 +50,10 @@ public class Level {
 	// Plataformas
 	public Array<Wall> walls;
 	public Array<Floor> floors;
+	public Array<Torches> torches;
 
 	// Decorados
-	public Torches torches;
+	//public Torches torches;
 
 	// Lista general de actores usada para update y render
 	public Array<AbstractActor> actors;
@@ -71,6 +72,7 @@ public class Level {
 		actors = new Array<AbstractActor>();
 		walls = new Array<Wall>();
 		floors = new Array<Floor>();
+		torches = new Array<Torches>();
 		
 		
 		
@@ -135,7 +137,25 @@ public class Level {
 					
 					}
 					
+				}else if (BLOCK_TYPE.TORCH.sameColor(currentPixelColor)) {
+					
+					if (lastPixel != currentPixelColor) {
+					
+					obj = new Torches();
+					float heightIncreaseFactor = 0.25f;
+					offsetHeight = -3.0f;
+					obj.position.set(pixelX -3.0f, baseHeight * obj.dimension.y
+							* heightIncreaseFactor + offsetHeight);
+					torches.add((Torches) obj);
+					
+					
+				} else {
+					
+					//floors.get(floors.size - 1).increaseLength(1);
+				
 				}
+			
+			}
 				
 				
 				
@@ -153,18 +173,18 @@ public class Level {
 
 		
 		// Crea los decorados
-		torches = new Torches(pixmap.getWidth());
+		//torches = new Torches(pixmap.getWidth());
 
 		
 		// Situa los decorados
-		torches.position.set(0.1f, 0.1f);
+	//	torches.position.set(0.1f, 0.1f);
 
 		
 
 		// Agrega los actores a lista actors en el orden en que se dibujaran
 		actors.addAll(walls);
 		actors.addAll(floors);
-		actors.add(torches);
+		actors.addAll(torches);
 		
 		
 		

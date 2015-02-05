@@ -8,6 +8,8 @@ package net.ausiasmarch.fartman.game;
  *
  */
 
+import net.ausiasmarch.fartman.util.Constants;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
@@ -18,9 +20,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Disposable;
-
-import net.ausiasmarch.fartman.game.Assets.AssetLevelDecoration;
-import net.ausiasmarch.fartman.util.Constants;
 
 public class Assets implements Disposable, AssetErrorListener {
 	public static final String TAG = Assets.class.getName();
@@ -33,6 +32,7 @@ public class Assets implements Disposable, AssetErrorListener {
 	public AssetWall walls;
 	public AssetFloor floors;
 	public AssetLevelDecoration levelDecoration;
+	public AssetTorch torches;
 	
 	
 	
@@ -92,6 +92,14 @@ public class Assets implements Disposable, AssetErrorListener {
 		
 	}
 	
+	public class AssetTorch {
+		public final AtlasRegion torch;
+		
+		public AssetTorch(TextureAtlas atlas) {
+			torch = atlas.findRegion("torch");
+		}
+	}
+	
 	public class AssetLevelDecoration {
 		public final AtlasRegion torch;
 		
@@ -128,6 +136,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		fonts = new AssetFonts();
 		walls = new AssetWall(atlas);
 		floors = new AssetFloor(atlas);
+		torches = new AssetTorch(atlas);
 		levelDecoration = new AssetLevelDecoration(atlas);
 		
 		
