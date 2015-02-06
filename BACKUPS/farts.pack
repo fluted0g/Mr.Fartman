@@ -24,3 +24,24 @@ torch
   orig: 58, 62
   offset: 0, 0
   index: -1
+grayroundbricks
+  rotate: false
+  xy: 13, 85
+  size: 66, 64
+  orig: 66, 64
+  offset: 0, 0
+  index: -1
+qraysquarebricks
+  rotate: false
+  xy: 86, 85
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+laminatedbricks
+  rotate: false
+  xy: 13, 168
+  size: 64, 54
+  orig: 64, 54
+  offset: 0, 0
+  index: -1

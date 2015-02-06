@@ -1,9 +1,10 @@
 package net.ausiasmarch.fartman.util;
 
 import net.ausiasmarch.fartman.actors.AbstractActor;
+import net.ausiasmarch.fartman.util.Constants;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+
 import com.badlogic.gdx.math.Vector2;
 
 
@@ -24,9 +25,9 @@ public class CameraAssistant {
 	/** Posicion de la camara */
 	private Vector2 position;
 	/** Actor destinatario */
-	//private AbstractActor target;
+	private AbstractActor target;
 	
-	private Sprite target;
+	//private Sprite target;
 
 	/** Constructor */
 	public CameraAssistant () {
@@ -35,14 +36,17 @@ public class CameraAssistant {
 
 	/** Actualiza la camara */
 	public void update (float deltaTime) {
-		/*if (!hasTarget()) return;		
+		if (!hasTarget()) return;		
 		position.lerp(target.position, FOLLOW_SPEED * deltaTime);				
 		// Previene que la camara se mueva muy hacia abajo
-		position.y = Math.max(-1f, position.y);*/
+		position.y = Math.max(-1f, position.y);
 		
 		if (!hasTarget()) return;
-		position.x = target.getX() + target.getOriginX();
-		position.y = target.getY() + target.getOriginY();
+		Vector2 pos = new Vector2(Constants.VIEWPORT_WIDTH/ 2, Constants.VIEWPORT_HEIGHT / 2);
+		position.lerp(target.position,FOLLOW_SPEED * deltaTime);
+		position.x = target.position.x + 4.8f;
+		position.y = Math.max(-1f, position.y);
+
 	}
 
 	/** Establece la posicion de la camara */
@@ -56,24 +60,24 @@ public class CameraAssistant {
 	}
 
 	/** Establece el actor destinatario de la camara */
-	/*public void setTarget (AbstractActor target) {
+	public void setTarget (AbstractActor target) {
 		this.target = target;
-	}*/
-	
-	public void setTarget(Sprite sprite) {
-		this.target = sprite;
 	}
+	
+	/*public void setTarget(Sprite sprite) {
+		this.target = sprite;
+	}*/
 	
 
 	/** Obtiene el actor destinatario de la camara */
-	/*public AbstractActor getTarget () {
-		return target;
-	}*/
-	
-
-	public Sprite getTarget () {
+	public AbstractActor getTarget () {
 		return target;
 	}
+	
+
+	/*public Sprite getTarget () {
+		return target;
+	}*/
 	
 	/** Comprueba si la camara tiene destinatario */
 	public boolean hasTarget () {

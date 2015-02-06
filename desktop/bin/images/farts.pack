@@ -24,3 +24,87 @@ torch
   orig: 58, 62
   offset: 0, 0
   index: -1
+grayroundbricks
+  rotate: false
+  xy: 13, 84
+  size: 64, 63
+  orig: 64, 63
+  offset: 0, 0
+  index: -1
+graysquarebricks
+  rotate: false
+  xy: 86, 85
+  size: 68, 64
+  orig: 68, 64
+  offset: 0, 0
+  index: -1
+laminatedbricks
+  rotate: false
+  xy: 13, 168
+  size: 64, 54
+  orig: 64, 54
+  offset: 0, 0
+  index: -1
+nicebricks
+  rotate: false
+  xy: 87, 162
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+fartmanright
+  rotate: false
+  xy: 14, 915
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 1
+fartmanright
+  rotate: false
+  xy: 46, 916
+  size: 25, 47
+  orig: 25, 47
+  offset: 0, 0
+  index: 2
+fartmanright
+  rotate: false
+  xy: 78, 916
+  size: 24, 47
+  orig: 24, 47
+  offset: 0, 0
+  index: 3
+fartmanright
+  rotate: false
+  xy: 106, 916
+  size: 29, 47
+  orig: 29, 47
+  offset: 0, 0
+  index: 4
+fartmanleft
+  rotate: false
+  xy: 14, 867
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 1
+fartmanleft
+  rotate: false
+  xy: 45, 868
+  size: 25, 47
+  orig: 25, 47
+  offset: 0, 0
+  index: 2
+farmanleft
+  rotate: false
+  xy: 78, 867
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 3
+fartmanleft
+  rotate: false
+  xy: 109, 868
+  size: 29, 47
+  orig: 29, 47
+  offset: 0, 0
+  index: 4

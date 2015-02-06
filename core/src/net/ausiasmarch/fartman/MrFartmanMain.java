@@ -25,7 +25,7 @@ public class MrFartmanMain extends Game {
 	@Override
 	public void create() {
 		// Tipo de mensaje a mostrar durante la fase de dasarrollo
-		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		//Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		// Garga recursos
 		Assets.instance.init(new AssetManager());
 		// Carga  preferencias 

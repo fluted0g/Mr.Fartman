@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class Torches extends AbstractActor {
 
 	private TextureRegion torch;
-	private int length;
-	private int height;
+	private float length;
+	private float height;
 	
 	public Torches() {
 		init();
@@ -17,25 +17,38 @@ public class Torches extends AbstractActor {
 	
 	
 	private void init() {
-		dimension.set(1,1.05f);
+		dimension.set(1f,1f);
+		scale.set(0.5f,0.5f);
+		origin.set(1.5f,1.5f);
 		torch = Assets.instance.torches.torch;
-		setLength(1);
+		setDimension(1f,1f);
+		
+		
 	}
 	
-	private void setLength(int length) {
+
+	
+	private void setDimension(float length,float height) {
+		this.length = length;
+		this.height = height;
+		bounds.set(0,0,dimension.x * length, dimension.y *height);
+	}
+	
+	
+	private void setLength(float length) {
 
 		this.length = length;
 		bounds.set(0, 0, dimension.x * length, dimension.y);
 
 	}
 	
-	public void increaseLength(int amount) {
+	public void increaseLength(float amount) {
 		
 		setLength(length + amount);
 		
 	}
 	
-	public void setHeight(int height) {
+	public void setHeight(float height) {
 		this.height = height;
 		bounds.set(0,0,dimension.x, dimension.y *height);
 	}

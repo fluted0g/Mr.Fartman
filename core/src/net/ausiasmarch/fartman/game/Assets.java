@@ -16,9 +16,11 @@ import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
 
 public class Assets implements Disposable, AssetErrorListener {
@@ -33,6 +35,7 @@ public class Assets implements Disposable, AssetErrorListener {
 	public AssetFloor floors;
 	public AssetLevelDecoration levelDecoration;
 	public AssetTorch torches;
+	public AssetPlayer player;
 	
 	
 	
@@ -78,7 +81,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final AtlasRegion wall;
 		
 		public AssetWall(TextureAtlas atlas) {
-			wall = atlas.findRegion("wall");
+			wall = atlas.findRegion("nicebricks");
 		}
 	}
 	
@@ -87,7 +90,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final AtlasRegion floor;
 		
 		public AssetFloor(TextureAtlas atlas) {
-			floor = atlas.findRegion("floor");
+			floor = atlas.findRegion("nicebricks");
 		}
 		
 	}
@@ -105,6 +108,21 @@ public class Assets implements Disposable, AssetErrorListener {
 		
 		public AssetLevelDecoration(TextureAtlas atlas) {
 			torch = atlas.findRegion("torch");
+		}
+	}
+	
+	public class AssetPlayer {
+		public final Animation movingRight;
+		public final Animation movingLeft;
+
+		public AssetPlayer(TextureAtlas atlas) {
+			Array<AtlasRegion> regions = null;
+			// Animacion: Player corriendo a la derecha
+			regions = atlas.findRegions("fartmanright");
+			movingRight = new Animation(0.1f, regions);
+			// Animacion: Player corriendo a la izquierda
+			regions = atlas.findRegions("fartmanleft");
+			movingLeft = new Animation(0.1f, regions);
 		}
 	}
 	
@@ -138,6 +156,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		floors = new AssetFloor(atlas);
 		torches = new AssetTorch(atlas);
 		levelDecoration = new AssetLevelDecoration(atlas);
+		player = new AssetPlayer(atlas);
 		
 		
 		

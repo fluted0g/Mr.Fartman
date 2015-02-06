@@ -8,6 +8,11 @@ package net.ausiasmarch.fartman.game;
  *
  */
 
+import net.ausiasmarch.fartman.actors.AbstractActor;
+import net.ausiasmarch.fartman.actors.Player;
+import net.ausiasmarch.fartman.actors.Player.JUMP_STATE;
+import net.ausiasmarch.fartman.actors.Wall;
+import net.ausiasmarch.fartman.actors.Floor;
 import net.ausiasmarch.fartman.util.CameraAssistant;
 import net.ausiasmarch.fartman.util.Constants;
 import net.ausiasmarch.fartman.util.GamePreferences;
@@ -17,11 +22,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Pixmap.Format;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 
@@ -55,7 +56,7 @@ public class WorldController extends InputAdapter {
 	private int levelNumber;	
 	
 	
-	private static final String TAG = WorldController.class.getName();
+	//private static final String TAG = WorldController.class.getName();
 	
 	public Sprite[] testSprites;
 	public int selectedSprite;
@@ -79,9 +80,11 @@ public class WorldController extends InputAdapter {
 		timeGameOverDelay = 0;
 		// inicia el nivel
 		initLevel();
-		Gdx.input.setInputProcessor(this);
+		
+		
+		//Gdx.input.setInputProcessor(this);
 
-		initTestObjects();
+		//initTestObjects(); DEBUG
 	}
 
 	/** Inicia le nivel de juego */
@@ -94,13 +97,13 @@ public class WorldController extends InputAdapter {
 		// Crea el nivel de juego
 		levelNumber = GamePreferences.instance.level;
 		level = new Level(levelNumber);	
-
+		cameraAssistant.setTarget(level.player);
 	}
 
 	/** Actualiza el juego */
 	public void update(float deltaTime) {		
 		// Si el juego es game over o se completo un nivel
-		if (isGameOver() || levelCompleted || finalLevel) {
+		/*if (isGameOver() || levelCompleted || finalLevel) {
 			// Disminuye el tiempo de espera		
 			timeGameOverDelay -= deltaTime;
 			if (timeGameOverDelay < 0)
@@ -108,7 +111,10 @@ public class WorldController extends InputAdapter {
 		} else {
 			// Inicia el manejador de entrada del mundo del juego
 			handleInputGame(deltaTime);
-		}	
+		}	*/
+		handleInputGame(deltaTime);
+		
+		level.update(deltaTime);
 		
 		// Comprueba las colisiones
 		testCollisions();
@@ -125,8 +131,8 @@ public class WorldController extends InputAdapter {
 			else
 				initLevel();
 			
-			handleDebugInput(deltaTime);
-			updateTestObjects(deltaTime);
+			//handleDebugInput(deltaTime); DEBUG
+			//updateTestObjects(deltaTime); DEBUG
 			cameraAssistant.update(deltaTime);
 		}
 
@@ -173,13 +179,136 @@ public class WorldController extends InputAdapter {
 	// TESTS DE COLISIONES
 	// -----------------------------------------------------------------
 	private void testCollisions() {
-		
+		// Crea un rectangulo de colision para Player
+				r1.set(level.player.position.x, level.player.position.y,
+						level.player.bounds.width, level.player.bounds.height);
+
+				// Test de colisiones para actores estaticos sobre una Planform Rock
+				for (AbstractActor actor : level.actorsOnFloor) {
+					Rectangle rec = new Rectangle(actor.position.x, actor.position.y,
+							actor.bounds.width, actor.bounds.height);
+					for (Floor floor : level.floors) {
+						r2.set(floor.position.x, floor.position.y, floor.bounds.width,
+								floor.bounds.height);
+						if (rec.overlaps(r2))
+							onCollisionActorWithFloor(actor, floor);
+					}
+				}
+				
+				for (Floor floor : level.floors) {
+					// Crea un rectangulo para platform
+					r2.set(floor.position.x, floor.position.y, floor.bounds.width,
+							floor.bounds.height);
+					if (testCollisionPlatform && r1.overlaps(r2)) {
+						onCollisionPlayerWithFloor(floor);
+					}
+						
+				}
+				
+				for (AbstractActor actor : level.actorsOnWall) {
+					Rectangle rec = new Rectangle(actor.position.x, actor.position.y,
+							actor.bounds.width, actor.bounds.height);
+					for (Wall wall : level.walls) {
+						r2.set(wall.position.x, wall.position.y, wall.bounds.width,
+								wall.bounds.height);
+						if (rec.overlaps(r2))
+							onCollisionActorWithWall(actor, wall);
+					}
+				}
+				
+				for (Wall wall : level.walls) {
+					// Crea un rectangulo para platform
+					r2.set(wall.position.x, wall.position.y, wall.bounds.width,
+							wall.bounds.height);
+					if (testCollisionPlatform && r1.overlaps(r2)) {
+						onCollisionPlayerWithWall(wall);
+					}
+						
+				}
 	}
 
 	/*----------------------------------------------------------------
 		COLISIONES
 	 ----------------------------------------------------------------*/
+	// Colision de actores estaticos en plataformas
+		private void onCollisionActorWithFloor(AbstractActor actor, Floor floor) {
+			actor.position.y = floor.position.y + floor.bounds.height;
 
+		}
+		
+		private void onCollisionActorWithWall(AbstractActor actor, Wall wall) {
+			actor.position.y = wall.position.y + wall.bounds.height;
+
+		}
+
+		// COLISIONES DE PLAYER ..........................................
+
+		// Colision Player y Platform floor
+		private void onCollisionPlayerWithFloor(Floor floor) {
+			Player player = level.player;
+
+			// Diferencias de alturas
+			float heightDifference = Math.abs(player.position.y
+					- (floor.position.y + floor.bounds.height));
+
+			if (heightDifference > 0.25f) {
+				boolean hitLeftEdge = player.position.x > (floor.position.x + floor.bounds.width / 2.0f);
+				player.position.x = (hitLeftEdge)? 
+						floor.position.x + floor.bounds.width:
+						floor.position.x - player.bounds.width;	
+				if (hitLeftEdge)
+					player.position.x = floor.position.x + floor.bounds.width;
+				else
+					player.position.x = floor.position.x - player.bounds.width;
+				return;
+			}
+
+			switch (player.jumpState) {
+			case GROUNDED: // sobre una plataforma
+				break;
+			case FALLING: // cayendo
+			case JUMP_FALLING: // cayendo despues de un salto
+				player.position.y = floor.position.y + floor.bounds.height;
+				player.jumpState = JUMP_STATE.GROUNDED;
+				break;
+			case JUMP_RISING: // salto en aumento
+				player.position.y = floor.position.y + floor.bounds.height;
+			}
+
+		}
+		
+		private void onCollisionPlayerWithWall(Wall wall) {
+			Player player = level.player;
+
+			// Diferencias de alturas
+			float heightDifference = Math.abs(player.position.y
+					- (wall.position.y + wall.bounds.height));
+
+			if (heightDifference > 0.25f) {
+				boolean hitLeftEdge = player.position.x > (wall.position.x + wall.bounds.width / 2.0f);
+				player.position.x = (hitLeftEdge)? 
+						wall.position.x + wall.bounds.width:
+						wall.position.x - player.bounds.width;	
+				if (hitLeftEdge)
+					player.position.x = wall.position.x + wall.bounds.width;
+				else
+					player.position.x = wall.position.x - player.bounds.width;
+				return;
+			}
+
+		/*	switch (player.jumpState) {
+			case GROUNDED: // sobre una plataforma
+				break;
+			case FALLING: // cayendo
+			case JUMP_FALLING: // cayendo despues de un salto
+				player.position.y = wall.position.y + wall.bounds.height;
+				player.jumpState = JUMP_STATE.GROUNDED;
+				break;
+			case JUMP_RISING: // salto en aumento
+				player.position.y = wall.position.y + wall.bounds.height;
+			}*/
+
+		}
 
 	/*--------------------------------------------------------------------------
 	 *  Controles de entradas de usuario 
@@ -187,17 +316,75 @@ public class WorldController extends InputAdapter {
 
 	// Manejador de entradas para Player
 	private void handleInputGame(float deltaTime) {
-	
+		Player player = level.player;
+		// Si el destinatario de CameraAssistant es el Player
+		if (cameraAssistant.hasTarget(player)) {
+			player.animation = player.movingRight;
+		
+			//elapsedTimeBetweenBullets += deltaTime;
+			
+		/*	if (bullet != null && bullet.isRemoved()) {
+				bullet = null;
+				level.actors.removeValue(bullet, false);
+				
+				*/
+			}	
+					
+			  // Plataforma Desktop .................................... 
+			if (Gdx.app.getType() == ApplicationType.Desktop){
+			     //velocidad no es 0 
+				 if (player.velocity.x != 0){ 
+					 player.animation = player.movingLeft; 
+			     } 
+				 // Movimiento a la izquierda 
+			     if (Gdx.input.isKeyPressed(Keys.A)) {  
+			    	 player.velocity.x = -player.terminalVelocity.x; 
+			    	 player.animation = player.movingLeft;
+			     } else
+			     // Movimiento a la derecha
+			     if (Gdx.input.isKeyPressed(Keys.D)) {
+			    	 player.velocity.x = player.terminalVelocity.x; 
+			    	 player.animation = player.movingRight;
+			     }
+			     
+			     // Disparo: Se pulso la tecla B 
+			  /*   if (Gdx.input.isKeyPressed(Keys.B) && totalScreamerCandy > 0) {
+			    	 shot(); 
+			     }	*/
+			     
+			     // Salto: se pulso la tecla SPACE o toco la pantalla
+			     jump(Gdx.input.isKeyPressed(Keys.SPACE) || Gdx.input.isTouched()); 
+			     
+			     return; 
+			}  // fin Desktop ..............................................
+			 
+			
+		}//fin de CameraAssistant - Player
 
-	}
+	
+	
+	
+	
+	public void jump(boolean tag) {
+		level.player.setJumping(tag);
+
+		// Desktop y Android: Si se creo un nuevo candy....
+		/*
+		if (newCandy != null
+				&& (level.player.position.x > newCandy.position.x
+						+ newCandy.bounds.width || level.player.position.x
+						+ level.player.bounds.width < newCandy.position.x)) {
+			level.candies.add(newCandy);
+			level.actors.add(newCandy);
+			newCandy = null;
+		}
+		*/
+	} 
+
+
 	
 	//DEBUGGING STUFF
-	
-	
-	
-	
-	
-	
+/*	
 	
 	private void updateTestObjects(float deltaTime) {
 		//Get current rotation from selected sprite
@@ -314,5 +501,5 @@ public class WorldController extends InputAdapter {
 		y += cameraAssistant.getPosition().y;
 		cameraAssistant.setPosition(x, y);
 		}
-	
+	*/
 }

@@ -2,6 +2,7 @@ package net.ausiasmarch.fartman.game;
 
 import net.ausiasmarch.fartman.actors.AbstractActor;
 import net.ausiasmarch.fartman.actors.Floor;
+import net.ausiasmarch.fartman.actors.Player;
 import net.ausiasmarch.fartman.actors.Torches;
 import net.ausiasmarch.fartman.actors.Wall;
 import net.ausiasmarch.fartman.util.Constants;
@@ -20,7 +21,8 @@ public class Level {
 		EMPTY(0, 0, 0), // black
 		FLOOR(255,0,0), // red
 		WALL(0,255,0), // green
-		TORCH(0,0,255); // blue
+		TORCH(0,0,255), // blue
+		PLAYER(255,255,0); //yellow
 		
 
 		private int color;
@@ -39,7 +41,7 @@ public class Level {
 	} // fin enum BLOCK_TYPE
 
 	// Jugador
-	
+	public Player player;
 	
 	// Enemigos
 	
@@ -58,6 +60,10 @@ public class Level {
 	// Lista general de actores usada para update y render
 	public Array<AbstractActor> actors;
 
+	
+	//Lista para actores sobre suelo
+	public Array<AbstractActor> actorsOnFloor;
+	public Array<AbstractActor> actorsOnWall;
 
 	
 	// Constructor
@@ -73,7 +79,8 @@ public class Level {
 		walls = new Array<Wall>();
 		floors = new Array<Floor>();
 		torches = new Array<Torches>();
-		
+		actorsOnFloor = new Array<AbstractActor>();
+		actorsOnWall = new Array<AbstractActor>();
 		
 		
 		
@@ -148,14 +155,19 @@ public class Level {
 							* heightIncreaseFactor + offsetHeight);
 					torches.add((Torches) obj);
 					
-					
-				} else {
+					} else {
 					
 					//floors.get(floors.size - 1).increaseLength(1);
-				
+					}
+				}	else if (BLOCK_TYPE.PLAYER.sameColor(currentPixelColor)) {
+						obj = new Player();
+						offsetHeight = -4f;
+						obj.position.set(pixelX-3f, baseHeight * obj.dimension.y + offsetHeight);
+						player = (Player) obj;
+						
 				}
 			
-			}
+			
 				
 				
 				
@@ -185,6 +197,7 @@ public class Level {
 		actors.addAll(walls);
 		actors.addAll(floors);
 		actors.addAll(torches);
+		actors.add(player);
 		
 		
 		

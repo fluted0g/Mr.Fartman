@@ -11,8 +11,6 @@ package net.ausiasmarch.fartman.game;
 
 import net.ausiasmarch.fartman.util.Constants;
 
-
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -54,7 +52,7 @@ public class WorldRenderer implements Disposable {
 		cameraGUI.update();
         backgroundTexture = new Texture("images/background.png");
         backgroundSprite =new Sprite(backgroundTexture);
-        backgroundSprite.setBounds(0, 0, 1280,768);
+       // backgroundSprite.setBounds(0, 0, 1280,768);
         backgroundSprite.rotate(180);
 	}
 	

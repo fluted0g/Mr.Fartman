@@ -9,9 +9,9 @@ package net.ausiasmarch.fartman.util;
  */
 public class Constants {
 	/** Ancho visible del mundo juego en metros */
-	public static final float VIEWPORT_WIDTH = 15;
+	public static final float VIEWPORT_WIDTH = 6;
 	/** Alto visible del mundo juego en metros */
-	public static final float VIEWPORT_HEIGHT = 15;	
+	public static final float VIEWPORT_HEIGHT = 6;	
 	/** Ancho de GUI */
 	public static final float VIEWPORT_GUI_WIDTH = 1280;
 	/** Alto del GUI */
