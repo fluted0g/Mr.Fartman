@@ -44,7 +44,7 @@ public class CameraAssistant {
 		if (!hasTarget()) return;
 		Vector2 pos = new Vector2(Constants.VIEWPORT_WIDTH/ 2, Constants.VIEWPORT_HEIGHT / 2);
 		position.lerp(target.position,FOLLOW_SPEED * deltaTime);
-		position.x = target.position.x + 4.8f;
+		position.x = target.position.x + 1.4f;
 		position.y = Math.max(-1f, position.y);
 
 	}
