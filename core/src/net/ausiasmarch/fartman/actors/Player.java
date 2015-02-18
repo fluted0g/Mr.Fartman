@@ -17,11 +17,13 @@ public class Player extends AbstractActor {
 	// Animacion normal y corriendo
 	public Animation movingRight;
 	public Animation movingLeft;
+	public Animation staticRight;
+	public Animation staticLeft;
 	// Vida perdida
 	public boolean removeLife;
 
 	// Direcciones de movimiento
-	public ViewDirection viewDirection;
+	private ViewDirection viewDirection;
 	
 	// Enumerado con los valores de estado del salto
 	public enum JUMP_STATE {
@@ -51,17 +53,19 @@ public class Player extends AbstractActor {
 		// Animaciones
 		movingRight = Assets.instance.player.movingRight;
 		movingLeft = Assets.instance.player.movingLeft;		
-		setAnimation(movingRight);
+		staticRight = Assets.instance.player.staticRight;
+		staticLeft = Assets.instance.player.staticLeft;
+		setAnimation(staticRight);
 		// Origen de la imagen centrada en el actor
 		origin.set(dimension.x / 2, dimension.y / 2);
 		// Limites del rectangulo para deteccion de collisiones
 		bounds.set(0, 0, dimension.x, dimension.y);
 		// Valores fisicos
-		terminalVelocity.set(3.0f, 6.0f);
+		terminalVelocity.set(6.0f, 6.0f);
 		friction.set(12.0f, 0.0f);
 		acceleration.set(0.0f, -25.0f);
 		// Direccion del movimiento
-		viewDirection = ViewDirection.RIGHT;
+		setViewDirection(ViewDirection.RIGHT);
 		// Estado del salto
 		jumpState = JUMP_STATE.FALLING;
 		// Tiempo del salto
@@ -76,12 +80,20 @@ public class Player extends AbstractActor {
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		if (velocity.x != 0) {
-			viewDirection = velocity.x < 0 ? ViewDirection.LEFT : ViewDirection.RIGHT;
+			setViewDirection(velocity.x < 0 ? ViewDirection.LEFT : ViewDirection.RIGHT);
 		}
 
 		if (animation == movingRight) {
 			dimension.set(dimPlayerRight);
 		} else if (animation == movingLeft) {
+			dimension.set(dimPlayerLeft);
+		}
+		
+		if (animation == staticRight) {
+			dimension.set(dimPlayerRight);
+		}
+		
+		else if (animation == staticLeft) {
 			dimension.set(dimPlayerLeft);
 		}
 	}
@@ -133,7 +145,7 @@ public class Player extends AbstractActor {
 		batch.draw(reg.getTexture(), position.x, position.y, origin.x,
 				origin.y, dimension.x, dimension.y, scale.x, scale.y, rotation,
 				reg.getRegionX(), reg.getRegionY(), reg.getRegionWidth(),
-				reg.getRegionHeight(), viewDirection == ViewDirection.LEFT, false);
+				reg.getRegionHeight(), getViewDirection() == ViewDirection.LEFT, false);
 
 		// Resetea el color
 
@@ -160,6 +172,14 @@ public class Player extends AbstractActor {
 	
 		case FALLING: case JUMP_FALLING:  // Salto cayendo
 		}
+	}
+
+	public ViewDirection getViewDirection() {
+		return viewDirection;
+	}
+
+	public void setViewDirection(ViewDirection viewDirection) {
+		this.viewDirection = viewDirection;
 	}
 
 }

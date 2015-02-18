@@ -114,9 +114,9 @@ public class Level {
 						
 						obj = new Wall();
 						float heightIncreaseFactor = 0.25f;
-						offsetHeight = -3.0f;
+						offsetHeight = 0f;
 						obj.position.set(pixelX - 3.0f, baseHeight * obj.dimension.y
-								* heightIncreaseFactor + offsetHeight);
+							/*	* heightIncreaseFactor*/ + offsetHeight);
 						walls.add((Wall) obj);
 						
 						

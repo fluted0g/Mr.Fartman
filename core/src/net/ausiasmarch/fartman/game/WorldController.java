@@ -9,10 +9,10 @@ package net.ausiasmarch.fartman.game;
  */
 
 import net.ausiasmarch.fartman.actors.AbstractActor;
+import net.ausiasmarch.fartman.actors.Floor;
 import net.ausiasmarch.fartman.actors.Player;
 import net.ausiasmarch.fartman.actors.Player.JUMP_STATE;
 import net.ausiasmarch.fartman.actors.Wall;
-import net.ausiasmarch.fartman.actors.Floor;
 import net.ausiasmarch.fartman.util.CameraAssistant;
 import net.ausiasmarch.fartman.util.Constants;
 import net.ausiasmarch.fartman.util.GamePreferences;
@@ -262,7 +262,20 @@ public class WorldController extends InputAdapter {
 					player.position.x = floor.position.x - player.bounds.width;
 				return;
 			}
-
+			if (heightDifference > 0.25f) {
+				boolean hitFloorBase = player.position.y > (floor.position.y + floor.bounds.width / 2.0f);
+			player.position.y = (hitFloorBase)?
+					floor.position.y + floor.bounds.width:
+						floor.position.y - player.bounds.width;
+			if (hitFloorBase)
+				player.position.y = floor.position.y + floor.bounds.width;
+			else
+				player.position.y = floor.position.y - player.bounds.width;
+			return;
+				
+			}
+			
+			
 			switch (player.jumpState) {
 			case GROUNDED: // sobre una plataforma
 				break;
@@ -319,8 +332,8 @@ public class WorldController extends InputAdapter {
 		Player player = level.player;
 		// Si el destinatario de CameraAssistant es el Player
 		if (cameraAssistant.hasTarget(player)) {
-			player.animation = player.movingRight;
-		
+			player.animation = player.staticRight;
+		}
 			//elapsedTimeBetweenBullets += deltaTime;
 			
 		/*	if (bullet != null && bullet.isRemoved()) {
@@ -328,25 +341,47 @@ public class WorldController extends InputAdapter {
 				level.actors.removeValue(bullet, false);
 				
 				*/
-			}	
+
 					
 			  // Plataforma Desktop .................................... 
 			if (Gdx.app.getType() == ApplicationType.Desktop){
 			     //velocidad no es 0 
-				 if (player.velocity.x != 0){ 
+		/*		if (player.velocity.x != 0) {
+					player.animation = player.movingLeft;
+				}*/
+				
+			/*	if (player.velocity.x != 0){ 
 					 player.animation = player.movingLeft; 
-			     } 
+			     }*/
+				 
+				 
+			   
 				 // Movimiento a la izquierda 
 			     if (Gdx.input.isKeyPressed(Keys.A)) {  
 			    	 player.velocity.x = -player.terminalVelocity.x; 
-			    	 player.animation = player.movingLeft;
+			    	 //player.setViewDirection(ViewDirection.LEFT);
+			    	 player.animation = player.staticLeft;
+			    	 player.animation = player.movingRight;
+
 			     } else
+			    	 
 			     // Movimiento a la derecha
 			     if (Gdx.input.isKeyPressed(Keys.D)) {
 			    	 player.velocity.x = player.terminalVelocity.x; 
+			    	 //player.setViewDirection(ViewDirection.RIGHT);
 			    	 player.animation = player.movingRight;
 			     }
-			     
+			     if (Gdx.input.isKeyJustPressed(Keys.A)) {
+					 player.animation = player.staticLeft;
+				 }
+			      
+			     if (Gdx.input.isKeyJustPressed(Keys.D)) {
+			    	player.animation = player.staticRight;
+				 }
+				 
+			     if (Gdx.input.isKeyJustPressed(Keys.R)) {
+			    	 init();
+			     }
 			     // Disparo: Se pulso la tecla B 
 			  /*   if (Gdx.input.isKeyPressed(Keys.B) && totalScreamerCandy > 0) {
 			    	 shot(); 

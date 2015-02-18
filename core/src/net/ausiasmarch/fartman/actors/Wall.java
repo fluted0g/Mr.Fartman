@@ -16,7 +16,7 @@ public class Wall extends AbstractActor {
 	}
 	
 	private void init() {
-		dimension.set(1,1f);
+		dimension.set(1f,1f);
 		wall = Assets.instance.walls.wall;
 		setLength(1);
 	}

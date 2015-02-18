@@ -24,6 +24,27 @@ torch
   orig: 58, 62
   offset: 0, 0
   index: -1
+candle
+  rotate: false
+  xy: 225, 16
+  size: 50, 66
+  orig: 50, 66
+  offset: 0, 0
+  index: 1
+candle
+  rotate: false
+  xy: 277, 16
+  size: 50, 66
+  orig: 50, 66
+  offset: 0, 0
+  index: 2
+candle
+  rotate: false
+  xy: 331, 18
+  size: 50, 66
+  orig: 50, 66
+  offset: 0, 0
+  index: 3
 grayroundbricks
   rotate: false
   xy: 13, 84
@@ -108,3 +129,31 @@ fartmanleft
   orig: 29, 47
   offset: 0, 0
   index: 4
+fartmanstaticleft
+  rotate: false
+  xy: 141, 820
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 1
+fartmanstaticleft
+  rotate: false
+  xy: 141, 820
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 2
+fartmanstaticright
+  rotate: false
+  xy: 141, 868
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 1
+fartmanstaticright
+  rotate: false
+  xy: 141, 868
+  size: 24, 48
+  orig: 24, 48
+  offset: 0, 0
+  index: 2

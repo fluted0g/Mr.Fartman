@@ -99,7 +99,7 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final AtlasRegion torch;
 		
 		public AssetTorch(TextureAtlas atlas) {
-			torch = atlas.findRegion("torch");
+			torch = atlas.findRegion("candle");
 		}
 	}
 	
@@ -107,19 +107,27 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final AtlasRegion torch;
 		
 		public AssetLevelDecoration(TextureAtlas atlas) {
-			torch = atlas.findRegion("torch");
+			torch = atlas.findRegion("candle");
 		}
 	}
 	
 	public class AssetPlayer {
+		public final Animation staticRight;
+		public final Animation staticLeft;
 		public final Animation movingRight;
 		public final Animation movingLeft;
 
 		public AssetPlayer(TextureAtlas atlas) {
 			Array<AtlasRegion> regions = null;
+			//Animacion:Player mirando a la derecha, quieto
+			regions = atlas.findRegions("fartmanstaticright");
+			staticRight = new Animation(0.1f,regions);
 			// Animacion: Player corriendo a la derecha
 			regions = atlas.findRegions("fartmanright");
 			movingRight = new Animation(0.1f, regions);
+			//Animacion: Player mirando a la izquierda, quieto
+			regions = atlas.findRegions("fartmanstaticleft");
+			staticLeft = new Animation(0.1f,regions);
 			// Animacion: Player corriendo a la izquierda
 			regions = atlas.findRegions("fartmanleft");
 			movingLeft = new Animation(0.1f, regions);

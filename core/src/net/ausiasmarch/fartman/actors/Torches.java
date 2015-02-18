@@ -17,9 +17,9 @@ public class Torches extends AbstractActor {
 	
 	
 	private void init() {
-		dimension.set(1f,1f);
+		dimension.set(1.5f,1.5f);
 		scale.set(0.5f,0.5f);
-		origin.set(1.5f,1.5f);
+		origin.set(2.25f,-0.95f);
 		torch = Assets.instance.torches.torch;
 		setDimension(1f,1f);
 		
