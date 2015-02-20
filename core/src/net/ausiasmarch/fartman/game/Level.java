@@ -116,7 +116,7 @@ public class Level {
 						float heightIncreaseFactor = 0.25f;
 						offsetHeight = 0f;
 						obj.position.set(pixelX - 3.0f, baseHeight * obj.dimension.y
-							/*	* heightIncreaseFactor*/ + offsetHeight);
+								* heightIncreaseFactor + offsetHeight);
 						walls.add((Wall) obj);
 						
 						
@@ -161,7 +161,7 @@ public class Level {
 					}
 				}	else if (BLOCK_TYPE.PLAYER.sameColor(currentPixelColor)) {
 						obj = new Player();
-						offsetHeight = -4f;
+						offsetHeight = -17.4f;
 						obj.position.set(pixelX-3f, baseHeight * obj.dimension.y + offsetHeight);
 						player = (Player) obj;
 						

@@ -34,7 +34,7 @@ public class Player extends AbstractActor {
 	}
 	
 	// Estado del salto
-	public JUMP_STATE jumpState; 		    
+	private JUMP_STATE jumpState; 		    
 	// Duracion del salto
 	public float timeJumping; 				
 	// Dimensiones normal y corriendo
@@ -67,7 +67,7 @@ public class Player extends AbstractActor {
 		// Direccion del movimiento
 		setViewDirection(ViewDirection.RIGHT);
 		// Estado del salto
-		jumpState = JUMP_STATE.FALLING;
+		setJumpState(JUMP_STATE.FALLING);
 		// Tiempo del salto
 		timeJumping = 0;
 		// Pierde una vida
@@ -101,10 +101,10 @@ public class Player extends AbstractActor {
 	@Override
 	protected void updateMotionY(float deltaTime) {
 		// Segun sea el estado del salto
-		switch (jumpState) {
+		switch (getJumpState()) {
 		// En pie sobre la plataforma
 		case GROUNDED:
-			jumpState = JUMP_STATE.FALLING; // salto cayendo	
+			setJumpState(JUMP_STATE.FALLING); // salto cayendo	
 
 			break;
 		// Salto iniciado y aumentando
@@ -129,7 +129,7 @@ public class Player extends AbstractActor {
 			}
 		}
 		
-		if (jumpState != JUMP_STATE.GROUNDED) {
+		if (getJumpState() != JUMP_STATE.GROUNDED) {
 		//	dustParticles.allowCompletion();
 			super.updateMotionY(deltaTime);
 		}
@@ -153,20 +153,20 @@ public class Player extends AbstractActor {
 
 	// Establece el salto
 	public void setJumping(boolean jumpKeyPressed) {
-		switch (jumpState) {
+		switch (getJumpState()) {
 		case GROUNDED: // Sobre una plataforma
 			if (jumpKeyPressed) {
 				// Empieza a contar el tiempo de salto
 				timeJumping = 0;
 				// Inicia el salto
-				jumpState = JUMP_STATE.JUMP_RISING;
-				// Si ha persido una vida				
+				setJumpState(JUMP_STATE.JUMP_RISING);
+				// Si ha perdido una vida				
 				terminalVelocity.y = removeLife ? 2.0f: 4.5f;
 			}
 			break;
 		case JUMP_RISING: // Salto elevandose
 			if (!jumpKeyPressed) {
-				jumpState = JUMP_STATE.JUMP_FALLING; // Salto cayendo
+				setJumpState(JUMP_STATE.JUMP_FALLING); // Salto cayendo
 			}
 			break;
 	
@@ -180,6 +180,14 @@ public class Player extends AbstractActor {
 
 	public void setViewDirection(ViewDirection viewDirection) {
 		this.viewDirection = viewDirection;
+	}
+
+	public JUMP_STATE getJumpState() {
+		return jumpState;
+	}
+
+	public void setJumpState(JUMP_STATE jumpState) {
+		this.jumpState = jumpState;
 	}
 
 }

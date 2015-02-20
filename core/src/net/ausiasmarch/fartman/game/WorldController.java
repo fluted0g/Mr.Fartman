@@ -250,7 +250,20 @@ public class WorldController extends InputAdapter {
 			// Diferencias de alturas
 			float heightDifference = Math.abs(player.position.y
 					- (floor.position.y + floor.bounds.height));
-
+			
+			boolean hitFloorBase = player.position.y < (floor.position.y+floor.bounds.height);
+			float bottomFloor = floor.position.y - floor.bounds.height; 
+			
+			
+			
+			if(hitFloorBase && player.getJumpState() == JUMP_STATE.JUMP_RISING) {
+				player.position.y = floor.bounds.height;
+				player.setJumpState(JUMP_STATE.JUMP_FALLING);
+				return;
+			}
+			
+			/*else
+			
 			if (heightDifference > 0.25f) {
 				boolean hitLeftEdge = player.position.x > (floor.position.x + floor.bounds.width / 2.0f);
 				player.position.x = (hitLeftEdge)? 
@@ -261,28 +274,16 @@ public class WorldController extends InputAdapter {
 				else
 					player.position.x = floor.position.x - player.bounds.width;
 				return;
-			}
-			if (heightDifference > 0.25f) {
-				boolean hitFloorBase = player.position.y > (floor.position.y + floor.bounds.width / 2.0f);
-			player.position.y = (hitFloorBase)?
-					floor.position.y + floor.bounds.width:
-						floor.position.y - player.bounds.width;
-			if (hitFloorBase)
-				player.position.y = floor.position.y + floor.bounds.width;
-			else
-				player.position.y = floor.position.y - player.bounds.width;
-			return;
-				
-			}
+			}*/
 			
 			
-			switch (player.jumpState) {
+			switch (player.getJumpState()) {
 			case GROUNDED: // sobre una plataforma
 				break;
 			case FALLING: // cayendo
 			case JUMP_FALLING: // cayendo despues de un salto
 				player.position.y = floor.position.y + floor.bounds.height;
-				player.jumpState = JUMP_STATE.GROUNDED;
+				player.setJumpState(JUMP_STATE.GROUNDED);
 				break;
 			case JUMP_RISING: // salto en aumento
 				player.position.y = floor.position.y + floor.bounds.height;
@@ -346,13 +347,15 @@ public class WorldController extends InputAdapter {
 			  // Plataforma Desktop .................................... 
 			if (Gdx.app.getType() == ApplicationType.Desktop){
 			     //velocidad no es 0 
-		/*		if (player.velocity.x != 0) {
-					player.animation = player.movingLeft;
-				}*/
+
 				
-			/*	if (player.velocity.x != 0){ 
-					 player.animation = player.movingLeft; 
-			     }*/
+				if (player.velocity.x != 0){ 
+					 if (player.getViewDirection() == ViewDirection.LEFT)
+						 player.animation = player.movingRight; 
+					 else if (player.getViewDirection() == ViewDirection.RIGHT){
+						 player.animation = player.movingRight;
+					 }
+			     }
 				 
 				 
 			   
